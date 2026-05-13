@@ -1,6 +1,7 @@
 "use client";
 
 import { JobTitleForm } from "@/components/JobTitleForm";
+import { QuestionCard } from "@/components/QuestionCard";
 import { generateInterviewQuestions } from "@/lib/api";
 import { InterviewQuestion } from "@/types";
 import { FormEvent, useState } from "react";
@@ -87,30 +88,7 @@ export default function Home() {
             </div>
 
             {questions.map((item, index) => (
-              <div 
-                key={index}
-                className="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex gap-4">
-                  <span className="shrink-0 w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center font-bold">
-                    {index + 1}
-                  </span>
-                  <div className="space-y-3">
-                    <p className="text-lg font-medium text-gray-900 leading-relaxed">
-                      {item.question}
-                    </p>
-                    
-                    {item.rationale && (
-                      <div className="pl-4 border-l-2 border-gray-100">
-                        <p className="text-sm text-gray-500 leading-relaxed italic">
-                          <span className="font-semibold text-gray-400 not-italic uppercase text-[10px] tracking-widest mr-2">Rationale:</span>
-                          {item.rationale}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <QuestionCard question={item} index={index} />
             ))}
           </div>
         )}
