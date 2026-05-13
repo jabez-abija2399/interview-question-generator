@@ -1,5 +1,6 @@
 "use client";
 
+import { ErrorMessage } from "@/components/ErrorMessage";
 import { JobTitleForm } from "@/components/JobTitleForm";
 import { LoadingState } from "@/components/LoadingState";
 import { QuestionCard } from "@/components/QuestionCard";
@@ -65,10 +66,7 @@ export default function Home() {
 
         {/* Error state */}
         {error && (
-          <div className="p-4 mb-8 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm flex items-center gap-3">
-            <span className="text-lg">⚠️</span>
-            {error}
-          </div>
+          <ErrorMessage message={error} />
         )}
 
         {/* Results */}
