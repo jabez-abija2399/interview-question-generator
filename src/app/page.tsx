@@ -1,5 +1,6 @@
 "use client";
 
+import { JobTitleForm } from "@/components/JobTitleForm";
 import { generateInterviewQuestions } from "@/lib/api";
 import { InterviewQuestion } from "@/types";
 import { FormEvent, useState } from "react";
@@ -48,23 +49,12 @@ export default function Home() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex gap-3 mb-8">
-          <input
-            type="text"
-            value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
-            placeholder="e.g. Customer Success Manager"
-            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg
-          text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2
-          focus:ring-blue-500 focus:border-transparent bg-white"
-          />
-          <button 
-          type="submit"
-          className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg
-           hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed
-           transition-colors cursor-pointer"
-          >Generate</button>
-        </form>
+        <JobTitleForm
+          value={jobTitle}
+          onChange={setJobTitle}
+          onSubmit={handleSubmit}
+          loading={loading}
+        />
 
         {/* Loading State */}
         {loading && (
